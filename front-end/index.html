@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couch Potato</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <h1>Couch Potato</h1>
+
+    <div id="add-button-form">
+        <button>Add New Show</button>
+    </div>
+
+    <div id="form-section">
+        <form id="add-show-form">
+            <label for="title">Title</label>
+            <input type="text" id="title-input">
+            <br>
+            <label for="network">Network</label>
+            <input type="text" id="network-input">
+            <br>
+            <label for="year">Year</label>
+            <input type="text" id="year-input">
+            <br>
+            <label for="season">Seasons</label>
+            <input type="text" id="season-input">
+            <br>
+            <label for="image-link">Image URL</label>
+            <input type="text" id="image-link-input">
+            <br>
+            <label for="rating">Rating (0-5)</label>
+            <input type="text" id="rating-input">
+            <br>
+            <input type="submit"> 
+        </form>
+    </div>
+
+
+    <h2> Pick a Genre!</h2>
+
+    <div id="genre-list"></div>
+
+    <script src="javascripts/show.js" ></script>
+    <script src="javascripts/genre.js" ></script>
+    <script src="javascripts/index.js" ></script>
+</body>
+</html>
