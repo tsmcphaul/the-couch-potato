@@ -10,6 +10,7 @@ const seasonInput = document.getElementById("season-input");
 const ratingInput = document.getElementById("rating-input");
 const imageInput = document.getElementById("image-link-input");
 const genreInput = document.getElementById("genre-input");
+const showList = document.getElementById("shows-list");
 
 
 //

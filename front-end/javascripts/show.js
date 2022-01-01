@@ -28,7 +28,28 @@ class Show {
     static renderShows() {
         for (let show of Show.shows) {
             console.log(show)
+            show.createShowCard()
         }
+    }
+
+    createShowCard() {
+        let showCard = document.createElement('div')
+        showCard.className = "showCard"
+        this.showCard = showCard
+        showCard.innerHTML = this.cardContents()
+        showList.appendChild(showCard)
+
+    }
+
+    cardContents() {
+        return `<div class="card" style="width: 18rem;">
+        <img src=${this.image_link} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${this.title}</h5>
+          
+          <button class="btn btn-primary">More Info</button>
+        </div>
+      </div>`
     }
 
     // static submitShow(e) {
