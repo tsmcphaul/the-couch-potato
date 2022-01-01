@@ -22,9 +22,18 @@ class Genre {
     static renderGenres() {
         for (let genre of Genre.genres) {
             console.log(genre)
+            genre.createGenreButton();
         }
     }
 
+    createGenreButton() {
+        let genreButton = document.createElement('button')
+        genreButton.className = "genreButton"
+        this.genreButton = genreButton
+        genreButton.innerText = `${this.name}`
+        genreList.appendChild(genreButton)
+ 
+    }
     
     
 
