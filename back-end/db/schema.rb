@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_211149) do
+ActiveRecord::Schema.define(version: 2022_01_02_202029) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_26_211149) do
     t.integer "year"
     t.integer "season"
     t.text "image_link"
-    t.integer "rating"
+    t.integer "likes"
     t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

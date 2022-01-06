@@ -1,6 +1,7 @@
 class Genre {
 
     constructor(genre) {
+        this.id = genre.id
         this.name =  genre.name; 
         Genre.genres.push(this)
     }
@@ -13,6 +14,7 @@ class Genre {
             .then(genres => {
                 for(let genre of genres.data) {
                     let newGenre = new Genre(genre.attributes)
+                    newGenre.id = genre.id
                 }
                 console.log(genres.data)
                 this.renderGenres()
@@ -22,19 +24,54 @@ class Genre {
     static renderGenres() {
         for (let genre of Genre.genres) {
             console.log(genre)
-            genre.createGenreButton();
+            genre.genreButton();
         }
     }
 
-    createGenreButton() {
+    genreButton() {
         let genreButton = document.createElement('button')
         genreButton.className = "genreButton"
         this.genreButton = genreButton
-        genreButton.innerText = `${this.name}`
+        genreButton.innerText = `${this.name} - ${this.id}`
         genreList.appendChild(genreButton)
- 
+        
+        genreButton.addEventListener("click", function() {
+            console.log(`click ${this.innerText}`)
+            Show.showGenres.filter(s => {
+                console.log (s == this.innerText.split('-')[1])
+            })
+
+
+        })
     }
+
+
+    static submitGenre(e) {
+        e.preventDefault()
+        fetch(genresURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            body: JSON.stringify({
+                name: nameInput.value
+                
+            })
+        })
+        .then(resp => resp.json())
+        .then(genre => {
+            console.log(genre)
+            let newGenre = new Genre(genre.attributes)
+            newGenre.id = genre.id
+            
+        })
+        
+
+    }
+
     
-    
+
+
 
 }

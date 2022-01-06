@@ -10,6 +10,7 @@ class ShowsController < ApplicationController
 
   # GET /shows/1
   def show
+    show = Show.find(params[:id])
     render json: show
   end
 
@@ -47,6 +48,6 @@ class ShowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def show_params
-      params.require(:show).permit(:title, :network, :year, :season, :image_link, :rating)
+      params.require(:show).permit(:id, :title, :network, :year, :season, :image_link, :genre_id)
     end
 end
