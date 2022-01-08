@@ -37,17 +37,23 @@ class Genre {
         
         genreButton.addEventListener("click", function() {
             console.log(`click ${this.innerText}`)
-            Show.showGenres.filter(s => {
-                console.log (s == this.innerText.split('-')[1])
+            genreForm.style.display = 'none'
+            showForm.style.display = 'none'
+            showList.innerHTML = ""
+            showList.className = "row row-cols-1 row-cols-md-3 g-4"
+            const filteredShows = Show.shows.filter(s => {
+                return s.genre_id == this.innerText.split('-')[1]
             })
-
+            console.log(filteredShows)
+            filteredShows.forEach(function(fs) {
+                showList.innerHTML += fs.cardContents()
+            })
 
         })
     }
 
 
-    static submitGenre(e) {
-        e.preventDefault()
+    static submitGenre() {
         fetch(genresURL, {
             method: "POST",
             headers: {
@@ -64,14 +70,7 @@ class Genre {
             console.log(genre)
             let newGenre = new Genre(genre.attributes)
             newGenre.id = genre.id
-            
         })
-        
-
     }
-
-    
-
-
 
 }

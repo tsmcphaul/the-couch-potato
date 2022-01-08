@@ -13,17 +13,6 @@ class Show {
     }
 
     static shows = [];
-
-    static showGenres = []
-
-    static genreFilter() {
-        Show.shows.forEach(function (arrayItem) {
-            let x = arrayItem.genre_id;
-            Show.showGenres.push(x)
-            
-        })
-    }
-
      
     static fetchShows() {
         fetch(showsURL)
@@ -35,7 +24,6 @@ class Show {
                 }
                 console.log(shows.data)
                 this.renderShows()
-                this.genreFilter()
             })
     }
     static renderShows() {
@@ -52,18 +40,6 @@ class Show {
         this.showCard = showCard
         showCard.innerHTML = this.cardContents()
         card.appendChild(showCard)
-
-        // showCard.addEventListener("click", function() {
-        //     console.log("hello");            
-      
-        //   });
-        let idx = this.id - 1
-        likeButton[idx].addEventListener("click", function() {
-            // console.log(Show.shows[idx].likes)
-            likes[idx].innerText = `${Show.shows[idx].likes ++} Likes`
-            // increaseLikes(Show.shows[idx])
-            
-        })
           
     }
 
@@ -79,46 +55,13 @@ class Show {
           <p class="card-text">Seasons: ${this.season}</p>
                  
         </div>
-        <div class="like-counter">
-            <div class="likes"> ${this.likes} Likes</div>
-            <button class="like-button">♥</button>
-        </div>
 
         </div>
       </div>`
         
-      
     }
 
-   
-
-    // static increaseLikes(show) {
-    //     let likes = 0
-    //     fetch(`http://localhost:3000/shows/${show.id}`)
-    //     .then(resp => resp.json())
-    //     .then((data) => {
-    //         likes = data.attributes.likes
-    //     })
-
-    //     let newLikes = likes + 1
-
-    //     fetch("http://localhost:3000/shows/1", {
-    //         method: "PATCH",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Accept: "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             "likes": newLikes
-    //         })
-    //     })
-
-    // }
-  
-
-
     static submitShow() {
-        // e.preventDefault()
         fetch(showsURL, {
             method: "POST",
             headers: {
@@ -139,9 +82,8 @@ class Show {
         .then(show => {
             let newShow = new Show(show.attributes)
             newShow.id = show.id 
-            newShow.createShowCard()
-            
         })
         
     }
+    
 }

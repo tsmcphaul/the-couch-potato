@@ -20,6 +20,7 @@ const showCard = document.getElementsByClassName("card")
 const likeButton = document.getElementsByClassName("like-button")
 const likes = document.getElementsByClassName("likes")
 const genreButtons = document.getElementsByClassName("genreButton")
+const showsButton = document.getElementById("all-shows-button")
 
 
 
@@ -37,10 +38,14 @@ genreForm.style.display = 'none'
 showForm.addEventListener("submit", function(e) {
     e.preventDefault
     Show.submitShow()
-    
+    return Show.fetchShows();
 })
 
-genreForm.addEventListener("submit", Genre.submitGenre) 
+genreForm.addEventListener("submit", function(e) {
+    e.preventDefault
+    Genre.submitGenre()
+    return Genre.fetchGenres();
+}) 
 
 addShow.addEventListener("click", function() {
     showForm.style.display = 'inline'
@@ -50,4 +55,12 @@ addGenre.addEventListener("click", function() {
     genreForm.style.display = 'inline'
 })
 
-
+showsButton.addEventListener("click", function() {
+    genreForm.style.display = 'none'
+    showForm.style.display = 'none'
+    showList.innerHTML = ""
+    showList.className = "row row-cols-1 row-cols-md-3 g-4"
+    Show.shows.forEach(function(s) {
+        showList.innerHTML += s.cardContents()
+    })
+})
