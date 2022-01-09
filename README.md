@@ -1,24 +1,21 @@
-# README
+# Couch Potato
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Couch Potato is a single page application where fellow couch potatoes can add their favorite shows to binge watch!
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+- Clone the repository
+- Once cloned, make sure you're inside the backend directory and run 'bundle install' into the terminal
+- While in the backend directory, run 'rails db:migrate' and 'rails db:seed' 
+- Start up the Rails server with 'rails s'
+- In the frontend directory, open index.html in your browser
+- Be a couch potato!
 
-* System dependencies
 
-* Configuration
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-* Database creation
+Please make sure to update tests as appropriate.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
