@@ -22,13 +22,11 @@ class Show {
                     let newShow = new Show(show.attributes)
                     newShow.id = show.id
                 }
-                console.log(shows.data)
                 this.renderShows()
             })
     }
     static renderShows() {
         for (let show of Show.shows) {
-            console.log(show)
             show.createShowCard()
             
         }
