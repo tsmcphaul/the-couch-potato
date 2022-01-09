@@ -1,6 +1,6 @@
 # Couch Potato
 
-Couch Potato is a single page application where fellow couch potatoes can add their favorite shows to binge watch!
+Couch Potato is a single page application where fellow couch potatoes can add their favorite shows to binge watch and share with others!
 
 ## Installation
 
