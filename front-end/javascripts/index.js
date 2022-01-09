@@ -22,8 +22,10 @@ const likes = document.getElementsByClassName("likes")
 const genreButtons = document.getElementsByClassName("genreButton")
 const showsButton = document.getElementById("all-shows-button")
 
+showForm.style.display = 'none'
+genreForm.style.display = 'none'
 
-
+// document load
 document.addEventListener("DOMContentLoaded", () => {
     
     Genre.fetchGenres();
@@ -31,9 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
-
-showForm.style.display = 'none'
-genreForm.style.display = 'none'
+//event listeners
 
 showForm.addEventListener("submit", function(e) {
     e.preventDefault

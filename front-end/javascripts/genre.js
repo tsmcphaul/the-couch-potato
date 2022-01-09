@@ -8,6 +8,7 @@ class Genre {
 
     static genres = [];
 
+// fetch and render genres
     static fetchGenres() {
         fetch(genresURL)
             .then(resp => resp.json())
@@ -26,6 +27,7 @@ class Genre {
         }
     }
 
+//create genre button and filter event listener
     genreButton() {
         let genreButton = document.createElement('button')
         genreButton.className = "genreButton"
@@ -48,7 +50,7 @@ class Genre {
         })
     }
 
-
+// post request to create new genre
     static submitGenre() {
         fetch(genresURL, {
             method: "POST",

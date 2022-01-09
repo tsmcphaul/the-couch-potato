@@ -13,7 +13,8 @@ class Show {
     }
 
     static shows = [];
-     
+//fetch and render shows
+
     static fetchShows() {
         fetch(showsURL)
             .then(resp => resp.json())
@@ -31,6 +32,7 @@ class Show {
             
         }
     }
+//creates show card for page
 
     createShowCard() {
         let showCard = document.createElement('div')
@@ -58,7 +60,7 @@ class Show {
       </div>`
         
     }
-
+// post request to add new show
     static submitShow() {
         fetch(showsURL, {
             method: "POST",
