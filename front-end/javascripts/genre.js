@@ -1,8 +1,8 @@
 class Genre {
 
-    constructor(genre) {
-        this.id = genre.id
-        this.name =  genre.name; 
+    constructor(id, name) {
+        this.id = id
+        this.name =  name; 
         Genre.genres.push(this)
     }
 
@@ -14,8 +14,8 @@ class Genre {
             .then(resp => resp.json())
             .then(genres => {
                 for(let genre of genres.data) {
-                    let newGenre = new Genre(genre.attributes)
-                    newGenre.id = genre.id
+                    console.log(genre)
+                    new Genre(genre.id, genre.attributes.name)
                 }
                 this.renderGenres()
             })
@@ -38,20 +38,33 @@ class Genre {
         genreButton.addEventListener("click", function() {
             genreForm.style.display = 'none'
             showForm.style.display = 'none'
+            addGenre.style.display = 'none'
+            addShow.style.display = 'none'
             showList.innerHTML = ""
             showList.className = "row row-cols-1 row-cols-md-3 g-4"
             const filteredShows = Show.shows.filter(s => {
-                return s.genre_id == this.innerText.split('-')[1]
+                 return s.genre_id === parseInt(this.innerText.split('-')[1])
             })
+            console.log(filteredShows)
+            // let idx = 0
             filteredShows.forEach(function(fs) {
+                console.log(fs)
+                
                 showList.innerHTML += fs.cardContents()
+                // cardBody[fs.id-1].appendChild(Show.shows[fs.id-1].deleteButton)
+                // cardBody[idx].appendChild(Show.shows[fs.id-1].deleteButton)
+                // idx++
+                // cardBody[fs.id-1].innerHTML = fs.deleteButton()
+                // showList.innerHTML += fs.deleteButton()
             })
+            
 
         })
     }
 
 // post request to create new genre
     static submitGenre() {
+
         fetch(genresURL, {
             method: "POST",
             headers: {
@@ -65,9 +78,23 @@ class Genre {
         })
         .then(resp => resp.json())
         .then(genre => {
-            let newGenre = new Genre(genre.attributes)
-            newGenre.id = genre.id
+            // console.log(genre)
+            const newGenre = new Genre(genre.data.id, genre.data.attributes.name)
+            newGenre.genreButton()
+            genreForm.style.display = 'none'
         })
     }
+
+    // static deleteGenre() {
+    //     const deleteId = parseInt(deleteInput.value)
+    //     fetch(`${genresURL}/${deleteId}`, {
+    //         method: 'DELETE'
+    //     })
+    //     // .then(() => {
+    //     //     Genre.genres[deleteId-1].remove()
+    //     // })
+    // }
+
+
 
 }
